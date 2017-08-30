@@ -9,7 +9,7 @@ $myfield = 'descr';
 @iplist =`sudo iptables -L sshguard -n | awk '/DROP/{print \$4;}'`;
 
 # Whois lookup and print results
-$i = 1;     # Index starts from 1 so it corresponds to iptables chain #
+$i = 1;     # Index starts from 1 so it corresponds to iptables rule number
 foreach $ip (@iplist) {
 	chomp $ip;
 	$whodata = `whois $ip | grep -i $myfield | head -n1 | sed -e s/${myfield}:\\ */\\ \\ /g`;
