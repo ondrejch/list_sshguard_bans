@@ -13,6 +13,7 @@ $i=0;
 foreach $ip (@iplist) {
 	chomp $ip;
 	$whodata = `whois $ip | grep -i $myfield | head -n1 | sed -e s/$myfield//g`;
-	print $i++,"\t", $ip,"\t",$whodata;
+    chomp $whodata;
+	print $i++,"\t", $ip,"\t",$whodata,"\n";
 }
 
